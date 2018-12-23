@@ -4,65 +4,56 @@ public class loginValidator {
 
     static String name,password,mail,phone;
     static Scanner sc = new Scanner(System.in);
-    static user users = new user();
-    public static boolean login()
+    public static boolean login(user users)
     {
         boolean loginState=false;
         System.out.print("Enter your username: ");
         name = sc.nextLine();
         System.out.print("Enter your password: ");
         password = sc.nextLine();
-        for (int i=0;i<users.userName.size();i++)
-        {
-            if(name.equals(users.userName.get(i)) && password.equals(users.password.get(i)) )
+        if(name.equals(users.userName) && password.equals(users.password) )
             {
                 System.out.println("You have logged in successfully");
                 loginState = true;
-                break;
+              
             }
             else
             {
-                System.out.println("Incorrect username or password!!");
+              System.out.println("Incorrect username or password!!");
             }
-        }
         return  loginState;
     }
-    public static void signUp()
+    public static void signUp(user users)
     {
         System.out.print("Enter your username: ");
         name = sc.nextLine();
-        for (int i=0;i<users.userName.size();i++)
-        {
-            if(name.equals(users.userName.get(i)))
+            if(name.equals(users.userName))
             {
-                System.out.println("Username already exists");
-                break;
+            System.out.println("Username already exists ");
+               
             }
             else
             {
-                users.userName.add(name);
+                users.userName = name;
             }
-        }
+        
         System.out.print("Enter your password: ");
         password = sc.nextLine();
-        users.password.add(password);
+        users.password = password;
         System.out.print("Enter your email: ");
-        mail = sc.nextLine();
-        for (int i=0;i<users.email.size();i++)
-        {
-            if(mail.equals(users.email.get(i)))
+          mail = sc.nextLine();
+            if(mail.equals(users.email))
             {
-                System.out.println("mail already exists");
-                break;
+              System.out.println("mail already exists ");
+                
             }
             else
             {
-                users.email.add(mail);
+                users.email = mail;
             }
-        }
         System.out.print("Enter your phoneNum: ");
         phone = sc.nextLine();
-        users.phoneNum.add(phone);
+        users.phoneNum = phone;
         System.out.println("You have signed up successfully");
     }
 }
